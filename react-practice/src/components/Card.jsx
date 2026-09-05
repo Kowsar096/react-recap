@@ -71,24 +71,37 @@
 //         </>
 //     )
 // }
+
+
+
+import { useState } from "react";
 import "./card.css"
+
+// React hook
+//* 1. must use in component top level
+//* 2. must use inside react component
+
 export default function Card({ name, age }) {
 
-    const clickHandler = () => {
-        console.log('Greetings', name);
-    }
+    const [member, setMember] = useState('');
 
-    const anotherClickHandler = () => {
-        console.log("Another greetings");
+    const clickHandler = () => {
+        // console.log('Greetings', name);
+        setMember(name);
     }
-    const greetings = () => {
-        clickHandler();
-        anotherClickHandler();
-    }    
+    console.log(member)
+
+    // const anotherClickHandler = () => {
+    //     console.log("Another greetings");
+    // }
+    // const greetings = () => {
+    //     clickHandler();
+    //     anotherClickHandler();
+    // }    
     return (
 
         <div
-            onClick={greetings}
+            onClick={clickHandler}
             //   onMouseDown={}
             //   onMouseEnter={}
             //   onMouseLeave={}
@@ -96,6 +109,7 @@ export default function Card({ name, age }) {
             className="card">
             <p> Name: {name}</p>
             <p> Age: {age}</p>
+            {member && <p>Gretings {member}</p>}
         </div>
 
     )

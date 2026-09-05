@@ -1,13 +1,15 @@
 
+import { useState } from 'react';
 import './App.css'
 import Card from './components/Card';
+// import Counter from './components/counter';
 // import TestComponent from './TestComponent';
 
 const members = [
   { name: 'Kowsar', age: 26 },
   { name: 'Shakil', age: 9 },
   { name: 'Taosif', age: 25 },
-  { name: 'shawon', age: 24 },
+  { name: 'Shawon', age: 24 },
   { name: 'Irteja', age: 17 },
   { name: 'Robin', age: 20 },
 ]
@@ -26,9 +28,6 @@ const members = [
 //   )
 
 // }
-function App() {
-  return (
-    <div>
 
       {/* <Card name={members[0].name}  age={members[0].age}/>
   <Card name={members[2].name} age={members[1].age}/>
@@ -38,8 +37,25 @@ function App() {
   <Card name={members[5].name} age={members[5].age}/> */}
 
 
-      {
-        members
+      
+
+
+function App() {
+
+const [name, setName]= useState('')
+
+  const handleSubmit = (e)=>{
+    e.preventDefault();  //synthetic event
+    console.log(name)
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input className='input' type="text" onChange={(e)=>setName(e.target.value)} />
+        <button className='button'>Submit</button>
+      </form>
+      {members
           .filter((members) => members.age > 18)
           .sort((a, b) => a.age - b.age)
           .map((members) => (
@@ -52,3 +68,17 @@ function App() {
 }
 
 export default App;
+
+// counter 
+// function App() {
+//   return (
+//     <div>
+
+//      <Counter/>
+    
+//     </div>
+//   )
+
+// }
+
+// export default App;
