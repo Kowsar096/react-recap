@@ -54,20 +54,49 @@
 
 
 // ternary operator
+// import "./card.css"
+// export default function Card({ name, age }) {
+//     return (
+//         <>
+//             {age > 18 ? (
+//                 <div className="card">
+//                     <p> Name: {name}</p>
+//                     <p> Age: {age}</p>
+//                 </div>
+//             ) : (<div className="card">
+//                 <p>{name} you are too young! </p>
+//             </div>)
+
+//             }
+//         </>
+//     )
+// }
 import "./card.css"
 export default function Card({ name, age }) {
-    return (
-        <>
-            {age > 18 ? (
-                <div className="card">
-                    <p> Name: {name}</p>
-                    <p> Age: {age}</p>
-                </div>
-            ) : (<div className="card">
-                <p>You are too young!</p>
-            </div>)
 
-            }
-        </>
+    const clickHandler = () => {
+        console.log('Greetings', name);
+    }
+
+    const anotherClickHandler = () => {
+        console.log("Another greetings");
+    }
+    const greetings = () => {
+        clickHandler();
+        anotherClickHandler();
+    }    
+    return (
+
+        <div
+            onClick={greetings}
+            //   onMouseDown={}
+            //   onMouseEnter={}
+            //   onMouseLeave={}
+            //   onScroll={}
+            className="card">
+            <p> Name: {name}</p>
+            <p> Age: {age}</p>
+        </div>
+
     )
 }
