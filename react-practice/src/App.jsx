@@ -2,7 +2,9 @@
 import { useState } from 'react';
 import './App.css'
 import Card from './components/Card';
-// import Counter from './components/counter';
+import Counter from './components/counter';
+import Display from './components/display';
+
 // import TestComponent from './TestComponent';
 
 // const members = [
@@ -41,6 +43,7 @@ import Card from './components/Card';
 
 
 function App() {
+  
 
 const [name, setName]= useState('');
 const [age, setAge]= useState('');
@@ -57,12 +60,19 @@ const [members, setMembers]= useState([
     e.preventDefault();  //synthetic event
     // setMembers([...members, {name, age}]); // copy using JavaScript spread operator
     setMembers((prev) => [...prev,{name,age}]) // reactive way using callback (prev= previous)
-    setName('');
+     setName('');
     setAge('');
   }
 
+  //* counter state
+  const [count, setCount] = useState(0); // state liftUp
+
+  // we can share value between components using props its (unidirectional)
+
   return (
     <div>
+      <Counter count= {count} setCount={setCount} />
+      <Display count= {count}  />
       <form className='inputDiv' onSubmit={handleSubmit}>
         <input className='input' type="text" onChange={(e)=>setName(e.target.value)} value={name}/>
         <input className='input' type="number" onChange={(e)=>setAge(e.target.value)} value={age}/>
@@ -76,6 +86,7 @@ const [members, setMembers]= useState([
           .map((members) => (
             <Card name={members.name} age={members.age} />
           ))}
+          
 
     </div>
   )
@@ -83,7 +94,6 @@ const [members, setMembers]= useState([
 }
 
 export default App;
-
 // counter 
 // function App() {
 //   return (
@@ -95,5 +105,6 @@ export default App;
 //   )
 
 // }
+
 
 // export default App;

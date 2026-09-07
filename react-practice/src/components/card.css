@@ -4,6 +4,19 @@
     padding: 20px;
     margin: 10px 0;
 }
+.card-blue {
+    background-color: rgb(166, 216, 250);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.card-orange{
+     background-color: rgb(235, 100, 22);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+}
 
 .input {
   width: 100%;
@@ -17,13 +30,13 @@
 }
 
 .button {
-    background-color: #48e6f1;
+    background-color: #967710;
     border: none;
     border-radius: 5px;
     color: white;
     padding: 16px 32px;
     text-decoration: none;
-    margin: 20px 0;
+    margin: 20px ;
     cursor: pointer;
 }
 .inputDiv{
