@@ -5,14 +5,14 @@ import Card from './components/Card';
 // import Counter from './components/counter';
 // import TestComponent from './TestComponent';
 
-const members = [
-  { name: 'Kowsar', age: 26 },
-  { name: 'Shakil', age: 9 },
-  { name: 'Taosif', age: 25 },
-  { name: 'Shawon', age: 24 },
-  { name: 'Irteja', age: 17 },
-  { name: 'Robin', age: 20 },
-]
+// const members = [
+//   { name: 'Kowsar', age: 26 },
+//   { name: 'Shakil', age: 9 },
+//   { name: 'Taosif', age: 25 },
+//   { name: 'Shawon', age: 24 },
+//   { name: 'Irteja', age: 17 },
+//   { name: 'Robin', age: 20 },
+// ]
 
 // function App() {
 //   return (
@@ -42,18 +42,33 @@ const members = [
 
 function App() {
 
-const [name, setName]= useState('')
+const [name, setName]= useState('');
+const [age, setAge]= useState('');
+const [members, setMembers]= useState([
+   { name: 'Kowsar', age: 26 },
+  { name: 'Shakil', age: 9 },
+  { name: 'Taosif', age: 25 },
+  { name: 'Shawon', age: 24 },
+  { name: 'Irteja', age: 17 },
+  { name: 'Robin', age: 20 },
+])
 
   const handleSubmit = (e)=>{
     e.preventDefault();  //synthetic event
-    console.log(name)
+    // setMembers([...members, {name, age}]); // copy using JavaScript spread operator
+    setMembers((prev) => [...prev,{name,age}]) // reactive way using callback (prev= previous)
+    setName('');
+    setAge('');
   }
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input className='input' type="text" onChange={(e)=>setName(e.target.value)} />
-        <button className='button'>Submit</button>
+      <form className='inputDiv' onSubmit={handleSubmit}>
+        <input className='input' type="text" onChange={(e)=>setName(e.target.value)} value={name}/>
+        <input className='input' type="number" onChange={(e)=>setAge(e.target.value)} value={age}/>
+      
+        
+      <button className='button'>Submit</button>
       </form>
       {members
           .filter((members) => members.age > 18)
