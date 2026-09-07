@@ -4,6 +4,7 @@ import './App.css'
 import Card from './components/Card';
 import Counter from './components/counter';
 import Display from './components/display';
+import CounterProvider from './providers/counter.provider';
 
 // import TestComponent from './TestComponent';
 
@@ -65,14 +66,15 @@ const [members, setMembers]= useState([
   }
 
   //* counter state
-  const [count, setCount] = useState(0); // state liftUp
+  // const [count, setCount] = useState(0); // state liftUp
 
   // we can share value between components using props its (unidirectional)
 
   return (
-    <div>
-      <Counter count= {count} setCount={setCount} />
-      <Display count= {count}  />
+    <CounterProvider>
+      <Counter/>
+      <Display/>
+
       <form className='inputDiv' onSubmit={handleSubmit}>
         <input className='input' type="text" onChange={(e)=>setName(e.target.value)} value={name}/>
         <input className='input' type="number" onChange={(e)=>setAge(e.target.value)} value={age}/>
@@ -88,7 +90,7 @@ const [members, setMembers]= useState([
           ))}
           
 
-    </div>
+    </CounterProvider>
   )
 
 }

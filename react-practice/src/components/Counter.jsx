@@ -1,9 +1,11 @@
+import { use } from "react";
+import { CounterContext } from "../providers/counter.context";
 import "./card.css"
 // import { useState } from "react"
 
-export default function Counter({count, setCount}) {
+export default function Counter() {
     // const [count, setCount] = useState(0);
-
+    const {count, setCount} = use(CounterContext)
     const handleIncrement = () => {
         setCount(count + 1);
     }
