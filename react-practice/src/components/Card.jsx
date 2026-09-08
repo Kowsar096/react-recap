@@ -81,7 +81,7 @@ import "./card.css"
 //* 1. must use in component top level
 //* 2. must use inside react component
 
-export default function Card({ name, age }) {
+export default function Card({ name, email }) {
 
     const [member, setMember] = useState('');
 
@@ -108,7 +108,7 @@ export default function Card({ name, age }) {
             //   onScroll={}
             className="card">
             <p> Name: {name}</p>
-            <p> Age: {age}</p>
+            <p> Email: {email}</p>
             {member && <p>Gretings {member}</p>}
         </div>
 
